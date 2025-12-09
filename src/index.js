@@ -1,10 +1,10 @@
-import { poseidonHash } from "./poseidon.js";
+import { opheraHash } from "./ophera.js";
 import { verifyProof } from "./verifier.js";
 import { encodePayment } from "./x402.js";
 
 export async function privatePayment(input) {
     // Example: Hash internal state
-    const commitment = poseidonHash([input.amount, input.nonce]);
+    const commitment = opheraHash([input.amount, input.nonce]);
 
     // Encode private x402 payload
     const payload = encodePayment({
