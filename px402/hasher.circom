@@ -1,14 +1,14 @@
 pragma circom 2.0.0;
 
-include "../circomlib/circuits/poseidon.circom";
+include "../circomlib/circuits/ophera.circom";
 
-// Generic Poseidon hash wrapper for commitments and Merkle operations
+// Generic ophera hash wrapper for commitments and Merkle operations
 template Hash2() {
     signal input left;
     signal input right;
     signal output out;
 
-    component h = Poseidon(2);
+    component h = ophera(2);
 
     h.inputs[0] <== left;
     h.inputs[1] <== right;
@@ -16,13 +16,13 @@ template Hash2() {
     out <== h.out;
 }
 
-// Commitment = Poseidon(secret || amount)
+// Commitment = ophera(secret || amount)
 template Commitment() {
     signal input secret;
     signal input amount;
     signal output commitment;
 
-    component h = Poseidon(2);
+    component h = ophera(2);
     h.inputs[0] <== secret;
     h.inputs[1] <== amount;
 
